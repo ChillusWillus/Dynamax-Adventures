@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DA Tracker — Dynamax Adventures Checklist</title>
+  <meta name="description" content="Track your shiny Pokémon from Dynamax Adventures in Pokémon Sword & Shield.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ── Loading Screen ───────────────────────────────────────────────── -->
+  <div id="loading-screen">
+    <div class="loader-frame">
+      <div class="loader-rule"></div>
+
+      <div class="loader-monogram">
+        <span class="monogram-letter">C</span>
+        <span class="monogram-amp">&amp;</span>
+        <span class="monogram-letter">W</span>
+      </div>
+
+      <div class="loader-rule"></div>
+      <div class="loader-subtitle">Dynamax Adventures Checklist</div>
+    </div>
+  </div>
+
+  <!-- ── App ──────────────────────────────────────────────────────────── -->
+  <div id="app">
+
+    <!-- Header -->
+    <header class="page-header">
+      <h1 class="page-title">Dynamax Adventures Checklist</h1>
+      <p class="page-subtitle">Shiny Pokémon Tracker · Crown Tundra</p>
+    </header>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-value" id="total-caught">0/212</span>
+        <span class="stat-label">Total Obtained</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value" id="legend-caught">0/48</span>
+        <span class="stat-label">Legendaries</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value" id="regular-caught">0/164</span>
+        <span class="stat-label">Standard</span>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <main class="content">
+
+      <!-- Legendary Section -->
+      <section class="section">
+        <div class="section-header">
+          <span class="section-title">Legendary Encounters</span>
+          <div class="section-line"></div>
+          <span class="section-count" id="legendary-count">48 total</span>
+        </div>
+        <div class="pokemon-grid" id="legendary-grid"></div>
+      </section>
+
+      <!-- Regular Section -->
+      <section class="section">
+        <div class="section-header">
+          <span class="section-title">Standard Encounters</span>
+          <div class="section-line"></div>
+          <span class="section-count" id="regular-count">164 total</span>
+        </div>
+        <div class="pokemon-grid" id="regular-grid"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ── Detail Modal ──────────────────────────────────────────────────── -->
+  <div id="modal-backdrop">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-ornament">✦</span>
+          <h2 class="modal-title" id="modal-name">POKÉMON</h2>
+        </div>
+        <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      </div>
+
+      <div class="modal-body">
+
+        <!-- Image & Status Row -->
+        <div class="modal-image-row">
+          <img id="modal-img" class="modal-pokemon-img" src="" alt="">
+          <div class="modal-pokemon-meta">
+            <div class="modal-pokemon-name" id="modal-name-display"></div>
+            <div class="modal-pokemon-type" id="modal-type"></div>
+            <div class="modal-caught-status" id="modal-status">
+              <span class="modal-caught-dot" id="modal-status-dot"></span>
+              <span>Not Yet Obtained</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Date & Game -->
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="modal-date">Date Caught</label>
+            <input class="field-input" id="modal-date" type="date" placeholder="—">
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="modal-game">Game</label>
+            <select class="field-select" id="modal-game">
+              <option value="">— Select —</option>
+              <option value="Sword">Pokémon Sword</option>
+              <option value="Shield">Pokémon Shield</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Switch & Player -->
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="modal-switch">Switch</label>
+            <input class="field-input" id="modal-switch" type="text" placeholder="Switch name / serial">
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="modal-player">Player</label>
+            <input class="field-input" id="modal-player" type="text" placeholder="Player name">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="btn-mark-obtained">
+          <span>Mark Obtained</span>
+        </button>
+        <button class="btn btn-primary" id="btn-save">Save</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
